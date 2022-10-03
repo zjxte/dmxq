@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大米星球</title>
+    <meta name="referrer" content="never">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!-- IE内核 强制使用最新的引擎渲染网页 -->
+    <meta name="renderer" content="webkit">  <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+    <!-- 手机H5兼容模式 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app"> <!-- X5  全屏处理 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">  <!-- UC 全屏应用模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/> <!--  苹果全屏应用模式 -->
+    <link rel="stylesheet" href="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/css/loading.css">
+    <link rel="stylesheet" href="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/css/mui-player.min.css">
+    <link rel="stylesheet" href="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/css/muiplayer.css">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/hls.js/1.1.5/hls.min.js"></script>
+    <script src="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/js/mui-player.min.js"></script>
+    <script src="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/js/mui-player-desktop-plugin.min.js"></script>
+    <script src="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/js/mui-player-mobile-plugin.min.js"></script>
+    <script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    let servers = ['wss://player.sakurot.com:3458/wss','wss://player2.lscsfw.com:6723/wss'];// 'wss://dmplayer.suoyou.live/wss'
+    var server_url = servers[getRandom(0,servers.length-1)];
+    var ws = null;
+    window.onunload = function(e){
+        try{
+            ws.close();
+        }catch(e){
+        }
+    }
+    </script>
+    <script src="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/js/main.js"></script>
+
+    <style>
+        #error {
+            background: url(https://ali2.a.kwimgs.com/ufile/adsocial/6143fadf-8f3b-42a8-a048-31eee3b0834c.jpg);
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            display: table; /*acts like a table*/
+            position: absolute;
+            z-index: 10000000001;
+            background-size: cover;
+        }
+        .bg {
+            background: url(https://ae01.alicdn.com/kf/Uf0868bcbc1094e75961b9c12490ebebbh.jpg);
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            opacity: .9;
+            position: absolute;
+        }
+
+        #loading {
+            height: 100%;
+        }
+
+        .app {
+            height: 100%;
+        }
+
+        .art-video-player .art-layer-autoPlayback .art-autoPlayback-close svg {
+            width: 15px;
+            height: 15px;
+            fill:  !important;
+        }
+
+        .art-video-player .art-layer-autoPlayback .art-autoPlayback-jump {
+            color:  !important;
+            cursor: pointer;
+        }
+
+        .art-video-player .art-contextmenus .art-contextmenu span:hover, .art-video-player .art-contextmenus .art-contextmenu span.art-current {
+            color:  !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="loading">
+    <div class="bg"></div>
+    <div class="main">
+        <div class="logo">
+            <img src="https://mdisk.oss-cn-hangzhou.aliyuncs.com/player/static/img/logo.png" alt="大米星球"/>
+        </div>
+        <div class="loading"></div>
+        <div class="tips">如果你觉得大米电影网不错，记得把 dmxq1.com 推荐给朋友们</div>
+    </div>
+</div>
+<div id="error" style="display: none;"><h1>解析失败，请重试或切换线路~</h1></div>
+<div class="app">
+    <template slot="nextMedia"><svg t="1584686776454" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1682"><path d="M783.14692466 563.21664097L240.85307534 879.55472126c-39.1656664 24.10194914-90.38230866-6.02548665-90.38230865-51.21664226v-632.676158c0-45.19115433 51.21664097-75.31859011 90.38230865-51.21664226l542.29384932 316.33808029c39.1656664 21.08920518 39.1656664 81.34407804 0 102.43328194z" p-id="1683" fill="#ffffff"></path><path d="M873.52923331 734.94302767c0 42.17841036-39.1656664 78.33133408-90.38230865 78.33133407s-90.38230866-36.15292371-90.38230735-78.33133407V289.05697233c0-42.17841036 39.1656664-78.33133408 90.38230735-78.33133407s90.38230866 36.15292371 90.38230865 78.33133407v445.88605534z" p-id="1684" fill="#ffffff"></path></svg></template>
+</div>
+</body>
+</html>
