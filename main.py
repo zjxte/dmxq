@@ -1,3 +1,7 @@
+'''
+电影下载爬虫, 需要先获得m3u8文件地址
+'''
+
 import requests
 import re
 import json
@@ -126,13 +130,13 @@ def get_url():
 
 
 if __name__ == '__main__':
-    # url = 'https://www.dmxq.fun/vodplay/63014-2-1.html' # fall
-    url = 'https://www.dmxq.fun/vodplay/15500-1-1.html' # 毒枭第一季
+    url = 'https://www.dmxq.fun/vodplay/63014-2-1.html' # fall
+    # url = 'https://www.dmxq.fun/vodplay/15500-1-1.html' # 毒枭第一季
 
-    get_html(url)
-    # get_m3u8()
+    # get_html(url)
+    get_m3u8()
 
-
+    # 多线程下载电影
     # start_time = time.time()
     # t = threading.Thread(target=get_m3u8)
     # t.start()
