@@ -78,8 +78,8 @@ def get_html(url):
         print(f'{ep_title} has been downloaded, {url}')
 
 if __name__ == '__main__':
-    # for i in range(1,11):
-    #     get_html(i)
+    for i in range(1,11):
+        get_html(i)
 
-    for i in range(1,6):
-        get_allNeflix(i)
+    # for i in range(1,6):
+    #     get_allNeflix(i)
